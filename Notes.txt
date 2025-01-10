@@ -1,0 +1,30 @@
+Backend:-
+Apache Kafka
+Spring Security
+Microservices
+Docker
+Redis
+REST APIs
+GraphQL
+API Gateway
+JWT, OAuth2.0
+
+
+Frontend:-
+Next JS 
+Tailwind CSS
+
+
+
+Modules :- 
+
+<modules>
+    <module>service-registry</module>
+    <module>api-gateway</module>
+    <module>user-service</module>
+    <module>pharmacy-locator-service</module>
+    <module>inventory-service</module>
+    <module>order-service</module>
+    <module>delivery-service</module>
+ </modules>
+
