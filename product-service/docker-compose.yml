@@ -7,7 +7,7 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_RO0T_PASSWORD: password
+      MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: product-service
     volumes:
-      - ./data:data/db
+      - ./data:/data/db  # Maps the local "data" directory to "/data/db" in the container
