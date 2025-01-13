@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,4 +32,19 @@ public class ProductService {
         return productRepository.findAll()
                 .stream().map(product -> new ProductResponse(product.getId(),product.getName(),product.getDescription(),product.getPrice())).collect(Collectors.toList());
     }
+
+    public ProductResponse updateProduct(String id, ProductRequest productRequest) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product with ID " + id + " not found"));
+
+        product.setName(productRequest.name());
+        product.setDescription(productRequest.description());
+        product.setPrice(productRequest.price());
+
+        productRepository.save(product);
+        log.info("Product with ID {} updated successfully", id);
+
+        return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
+    }
+
 }

@@ -52,4 +52,33 @@ class ProductServiceApplicationTests {
 
 	}
 
+	@Test
+
+	void shouldUpdateProduct() {
+		// Define the ID of the product to be updated
+		String productId = "6783605e4341bb67e2dab5f2";
+
+		// Define the request body with updated product details
+		String requestBody = """
+       		{
+				 "name": "Aspirine1234",
+				 "description": "Headache tablet",
+				 "price": 100
+			}
+    """;
+
+		// Perform the PUT request
+		RestAssured.given()
+				.contentType("application/json") // Set the content type to JSON
+				.body(requestBody)              // Attach the updated product details
+				.when()
+				.put("/api/product/update/" + productId) // Send the PUT request to the update endpoint
+				.then()
+				.body("id", Matchers.equalTo(productId)) // Validate the product ID in the response
+				.body("name", Matchers.equalTo("Aspirine1234")) // Validate the updated name
+				.body("description", Matchers.equalTo("Headache tablet")) // Validate the updated description
+				.body("price", Matchers.equalTo(120)); // Validate the updated price
+	}
+
+
 }

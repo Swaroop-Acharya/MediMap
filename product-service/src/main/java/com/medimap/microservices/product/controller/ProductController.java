@@ -29,6 +29,11 @@ public class ProductController {
        return productService.getAllProducts();
     }
 
+    @PutMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ProductResponse updateProduct(@PathVariable String id,@RequestBody ProductRequest productRequest){
+       return productService.updateProduct(id,productRequest);
+    }
 
 
 }
