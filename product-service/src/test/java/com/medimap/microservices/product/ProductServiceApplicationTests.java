@@ -1,8 +1,10 @@
 package com.medimap.microservices.product;
 
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -31,6 +33,7 @@ class ProductServiceApplicationTests {
 		mongoDBContainer.start();
 	}
 
+
 	@Test
 	void shouldCreateProduct() {
 		String requestBody= """
@@ -52,33 +55,68 @@ class ProductServiceApplicationTests {
 
 	}
 
+
 	@Test
-
 	void shouldUpdateProduct() {
-		// Define the ID of the product to be updated
-		String productId = "6783605e4341bb67e2dab5f2";
+		// Create the product
+		String createRequestBody = """
+        {
+            "id": "678362fd74800b1153a1e1b0",
+            "name": "Aspirine",
+            "description": "Painkiller tablet",
+            "price": 100.00
+        }
+    """;
+		Response createResponse = RestAssured.given()
+				.contentType("application/json")
+				.body(createRequestBody)
+				.when()
+				.post("/api/product/add")
+				.then()
+				.statusCode(201)
+				.extract()
+				.response();
 
-		// Define the request body with updated product details
-		String requestBody = """
-       		{
-				 "name": "Aspirine1234",
-				 "description": "Headache tablet",
-				 "price": 100
-			}
+		System.out.println("Create Response: " + createResponse.asString());
+		String createdProductId =
+				RestAssured.given()
+						.contentType("application/json")
+						.body(createRequestBody)
+						.when()
+						.post("/api/product/add")
+						.then()
+						.statusCode(201)
+						.extract()
+						.path("id");
+		// Verify product exists
+		RestAssured.given()
+				.when()
+				.get("/api/product/"+createdProductId)
+				.then()
+				.statusCode(200)
+				.body("name", Matchers.equalTo("Aspirine"));
+
+		// Define the updated product details
+		String updateRequestBody = """
+        {
+            "name": "Aspirine1234",
+            "description": "Headache tablet",
+            "price": 120.00
+        }
     """;
 
-		// Perform the PUT request
+		// Update the product
 		RestAssured.given()
-				.contentType("application/json") // Set the content type to JSON
-				.body(requestBody)              // Attach the updated product details
+				.contentType("application/json")
+				.body(updateRequestBody)
 				.when()
-				.put("/api/product/update/" + productId) // Send the PUT request to the update endpoint
+				.put("/api/product/update/678362fd74800b1153a1e1b0")
 				.then()
-				.body("id", Matchers.equalTo(productId)) // Validate the product ID in the response
-				.body("name", Matchers.equalTo("Aspirine1234")) // Validate the updated name
-				.body("description", Matchers.equalTo("Headache tablet")) // Validate the updated description
-				.body("price", Matchers.equalTo(120)); // Validate the updated price
+				.statusCode(200)
+				.body("id", Matchers.equalTo("678362fd74800b1153a1e1b0"))
+				.body("name", Matchers.equalTo("Aspirine1234"))
+				.body("description", Matchers.equalTo("Headache tablet"))
+				.body("price", Matchers.equalTo(120.00));
 	}
-
 
 }
