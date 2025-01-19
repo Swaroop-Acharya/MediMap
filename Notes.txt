@@ -28,3 +28,41 @@ Modules :-
     <module>delivery-service</module>
  </modules>
 
+
+
+Product-service:-
+New Topics learnt:-
+Test containers
+Rest Asurred
+Docker
+Records in java
+
+
+Done:-
+Learnt about Service-registry and API gateway
+Created Mongodb docker compose for this service - Learn: yml information for creating a docker container
+Created end points GET, POST
+Learnt about Java records how it usefull for creating DTO classes
+Learnt about test containers -  advangtages, problems solved by this , REST assured - definition and uses
+
+
+
+
+Problems faced:
+Lombok error : fixed add a plugin to pom regarding this
+
+Order-Service:-
+New topics learnt:-
+Flyweight
+
+
+Done:-
+
+
+Problem faced:-
+
+
+read this:-
+https://stackoverflow.com/questions/42135114/how-does-spring-jpa-hibernate-ddl-auto-property-exactly-work-in-spring
+
+
