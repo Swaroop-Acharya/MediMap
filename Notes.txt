@@ -60,7 +60,10 @@ Done:-
 Flyweight - Data migration
 
 Problem faced:-
-
+1) Flyweight error
+Detected failed migration to version 1 (init).
+Please remove any half-completed changes then run repair to fix the schema history.
+Solution: https://stackoverflow.com/questions/41147768/caused-by-org-flywaydb-core-api-flywayexception-validate-failed-migration-che
 
 read this:-
 https://stackoverflow.com/questions/42135114/how-does-spring-jpa-hibernate-ddl-auto-property-exactly-work-in-spring
