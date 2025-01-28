@@ -57,7 +57,9 @@ Flyweight
 
 
 Done:-
-Flyweight - Data migration
+Setup SQL
+Integration test for POST end point
+Flyweight - Data migration 
 
 Problem faced:-
 1) Flyweight error
@@ -68,4 +70,12 @@ Solution: https://stackoverflow.com/questions/41147768/caused-by-org-flywaydb-co
 read this:-
 https://stackoverflow.com/questions/42135114/how-does-spring-jpa-hibernate-ddl-auto-property-exactly-work-in-spring
 
+Inventory-Service:-
+Done:-
+
+
+Problem faced:-
+
+
+read this:-
 
