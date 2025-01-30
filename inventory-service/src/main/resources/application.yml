@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: inventory-service
+  datasource:
+    url: jdbc:mysql://localhost:3305/inventory_service
+    username: root
+    password: mysql
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    baselineOnMigrate: true
+    baselineVersion: 1
+
+
+
+server:
+  port: 8082
