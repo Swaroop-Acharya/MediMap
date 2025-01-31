@@ -72,10 +72,11 @@ https://stackoverflow.com/questions/42135114/how-does-spring-jpa-hibernate-ddl-a
 
 Inventory-Service:-
 Done:-
-
+POST req
 
 Problem faced:-
-
+t_inventory_seq error fixed it by changing the generatedValue startegy from AUTO to IDENTITY
 
 read this:-
+
 
