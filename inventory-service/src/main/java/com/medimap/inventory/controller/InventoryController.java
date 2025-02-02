@@ -12,9 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/inventory")
 public class InventoryController {
     private final InventoryService inventoryService;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public InventoryResponse addInventory(@RequestBody InventoryRequest inventoryRequest){
         return inventoryService.addInventory(inventoryRequest);
+    }
+
+    @GetMapping("/isInStock")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantity){
+        return inventoryService.isInStock(skuCode,quantity);
     }
 }
