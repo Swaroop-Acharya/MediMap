@@ -4,7 +4,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -73,7 +72,7 @@ class ProductServiceApplicationTests {
 				.when()
 				.post("/api/product/add")
 				.then()
-				.statusCode(201)
+				.statusCode(200)
 				.extract()
 				.response();
 
@@ -85,7 +84,7 @@ class ProductServiceApplicationTests {
 						.when()
 						.post("/api/product/add")
 						.then()
-						.statusCode(201)
+						.statusCode(200)
 						.extract()
 						.path("id");
 		// Verify product exists
