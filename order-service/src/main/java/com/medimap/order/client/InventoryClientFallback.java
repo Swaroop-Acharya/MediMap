@@ -4,12 +4,13 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
 @Slf4j
+@Component
 public class InventoryClientFallback implements InventoryClient {
     @Override
-    public boolean isInStock(String skuCode,Integer quantity) {
-        return false; // fallback logic
-    } 
+    public boolean isInStock(String skuCode, Integer quantity) {
+        log.error("Fallback called for SkuCode: "+skuCode);
+        return false; // Default response on fallback
+    }
 }
 
