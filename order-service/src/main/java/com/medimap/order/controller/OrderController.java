@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
     private final OrderService orderService;
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest){
-        orderService.placeOrder(orderRequest);
-        return "Order placed successfully!";
+        boolean isSuccess = orderService.placeOrder(orderRequest);
+        if(isSuccess)return "Order placed successfully!";
+        return "Product with SkuCode " + orderRequest.skuCode() + " is not in stock";
     }
 }

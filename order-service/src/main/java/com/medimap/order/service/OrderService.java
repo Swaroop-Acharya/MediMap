@@ -13,10 +13,9 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final InventoryClient inventoryClient;
 
-
-    public void placeOrder(OrderRequest orderRequest){
-        var isProductInStock= inventoryClient.isInStock(orderRequest.skuCode(),orderRequest.quantity());
-        if(isProductInStock){
+    public boolean placeOrder(OrderRequest orderRequest) {
+        var isProductInStock = inventoryClient.isInStock(orderRequest.skuCode(), orderRequest.quantity());
+        if (isProductInStock) {
             Order order = Order.builder()
                     .orderNumber(orderRequest.orderNumber())
                     .skuCode(orderRequest.skuCode())
@@ -24,7 +23,8 @@ public class OrderService {
                     .quantity(orderRequest.quantity())
                     .build();
             orderRepository.save(order);
-        }else throw new RuntimeException("Product with SkuCode "+orderRequest.skuCode()+" is not in stock");
-
+            return true;
+        }
+        return false;
     }
 }
