@@ -55,6 +55,7 @@ Order-Service:-
 New topics learnt:-
 Flyweight
 
+Problem: Integration test with wiremock
 
 Done:-
 Setup SQL
