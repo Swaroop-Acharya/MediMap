@@ -70,13 +70,17 @@ class OrderServiceApplicationTests {
                 """;
 		InventoryClientStub.stubInventoryCall("iphone_15", 1000);
 
-		RestAssured.given()
+		var responseBodyString = RestAssured.given()
 				.contentType("application/json")
 				.body(submitOrderJson)
 				.when()
 				.post("/api/order")
 				.then()
 				.log().all()
-				.statusCode(500);
+				.statusCode(400)
+				.extract()
+				.body().asString();
+
+		assertThat(responseBodyString, Matchers.is("Product with SkuCode iphone_15 is not in stock"));
 	}
 }

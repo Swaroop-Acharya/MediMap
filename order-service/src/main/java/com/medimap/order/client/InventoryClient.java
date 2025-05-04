@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "inventory-service", fallback = InventoryClientFallback.class, url = "${service.inventory.url}")
 public interface InventoryClient {
 
-    @GetMapping("api/inventory/isInStock")
+    @GetMapping("api/inventory/stock")
     boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantity);
 
 }
