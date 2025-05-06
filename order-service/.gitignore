@@ -33,4 +33,4 @@ build/
 .vscode/
 
 # Ignore MongoDB data files
-product-service/data/
+/data/
