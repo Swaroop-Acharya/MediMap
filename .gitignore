@@ -2,4 +2,4 @@
 *.sock
 
 # Exclude other unwanted files
-order-service/mysql/
+order-service/mysql/product-service/data/
