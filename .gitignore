@@ -1,7 +1,11 @@
 # Ignore MySQL socket files
 *.sock
 
+# Exclude MySQL data directory completely
+api-gateway/volume-data/mysql_keycloak_data/
+
 # Exclude other unwanted files
-order-service/mysql/product-service/data/
 product-service/data/
 order-service/mysql/
+inventory-service/mysql/
+
