@@ -80,4 +80,17 @@ t_inventory_seq error fixed it by changing the generatedValue startegy from AUTO
 
 read this:-
 
+Api-Gateway:
+Circuit braker states 
+Actuator for monitoring the health of microservies
+How to enable acuator health for circuit braker.
+Fallbacks in routes in api gateway.
 
+
+Kafka:
+Distributed message streaming tool/ Event driven 
+Integrating Kafka with Schema registry.
+Core capabilities of Kafka
+Dependency used: Spring for Apache Kafka
+What is zookeeper, how it manages the kafka clusters (orchestrator)
+What is boostrap servers property.

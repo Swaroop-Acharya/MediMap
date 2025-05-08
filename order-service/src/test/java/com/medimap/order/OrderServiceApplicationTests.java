@@ -1,6 +1,5 @@
 package com.medimap.order;
 
-
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,12 +36,17 @@ class OrderServiceApplicationTests {
 	@Test
 	void shouldSubmitOrder() {
 		String submitOrderJson = """
-                {
-                     "skuCode": "iphone_15",
-                     "price": 1000,
-                     "quantity": 1
-                }
-                """;
+				              {
+				                   "skuCode": "iphone_15",
+				                   "price": 1000,
+				                   "quantity": 1,
+							 "userDetails": {
+				  "name": "John Doe",
+				  "email": "john@example.com",
+				  "phoneNumber": "1234567890"
+				}
+				              }
+				              """;
 		InventoryClientStub.stubInventoryCall("iphone_15", 1);
 
 		var responseBodyString = RestAssured.given()
@@ -62,12 +66,17 @@ class OrderServiceApplicationTests {
 	@Test
 	void shouldFailOrderWhenProductIsNotInStock() {
 		String submitOrderJson = """
-                {
-                     "skuCode": "iphone_15",
-                     "price": 1000,
-                     "quantity": 1000
-                }
-                """;
+				{
+				     "skuCode": "iphone_15",
+				     "price": 1000,
+				     "quantity": 1000,
+					 "userDetails": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phoneNumber": "1234567890"
+  }
+				}
+				""";
 		InventoryClientStub.stubInventoryCall("iphone_15", 1000);
 
 		var responseBodyString = RestAssured.given()

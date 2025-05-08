@@ -19,7 +19,7 @@ public class InventoryController {
         return inventoryService.addInventory(inventoryRequest);
     }
 
-    @GetMapping("/isInStock")
+    @GetMapping("/stock")
     @ResponseStatus(HttpStatus.OK)
     public boolean isInStock(@RequestParam String skuCode, @RequestParam Integer quantity){
         return inventoryService.isInStock(skuCode,quantity);
