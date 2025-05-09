@@ -94,3 +94,5 @@ Core capabilities of Kafka
 Dependency used: Spring for Apache Kafka
 What is zookeeper, how it manages the kafka clusters (orchestrator)
 What is boostrap servers property.
+What is schema registory, why orderplacedEvent removed from producer and consumer
+what is avro how it is helpfull for maintaining single point of truth

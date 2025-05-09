@@ -33,8 +33,10 @@ public class OrderService {
 
             log.info("Start : Sending order placed event to Kafka topic");
 
-            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(order.getOrderNumber(),
-                    orderRequest.userDetails().email());
+            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent();
+            orderPlacedEvent.setOrderNumber(orderRequest.orderNumber());
+            orderPlacedEvent.setEmail(orderRequest.userDetails().email());
+            orderPlacedEvent.setPhone(orderRequest.userDetails().phoneNumber());
             kafkaTemplate.send("order-placed", orderPlacedEvent);
             log.info("End: Order placed event sent to Kafka topic");
 
