@@ -135,3 +135,5 @@ Spring boot integration with Kubernates probes
 How to enable these probes in deployment.yaml file.
 what is configMap, volumeMounts, env, volumes in deployment.
 curl http://localhost:9090/actuator/env | jq
+
+Rosource linK: https://spring.io/guides/topicals/spring-on-kubernetes#_deploying_to_kubernetes
