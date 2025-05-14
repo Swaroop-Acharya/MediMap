@@ -96,3 +96,42 @@ What is zookeeper, how it manages the kafka clusters (orchestrator)
 What is boostrap servers property.
 What is schema registory, why orderplacedEvent removed from producer and consumer
 what is avro how it is helpfull for maintaining single point of truth
+
+
+Kubernates:
+what is k8s, its uses
+What is Cluster, Nodes, Pods, Services, Deployment
+Nodes: Master node, Worker Nodes 
+What pods contains
+Types of Services: ClusterIP, NodePort, Loadbalance and ExternalName
+
+kubectl apply -f deployment.yaml         # Deploy an app
+kubectl get pods                         # List running pods
+kubectl get services                     # List services
+kubectl describe pod <pod-name>          # Detailed info of a pod
+kubectl delete -f deployment.yaml        # Delete deployment
+kubectl logs <pod-name>                  # View pod logs
+kubectl exec -it <pod-name> -- bash      # Access container terminal
+
+Point Docker cli to minikube's docker daemon
+eval $(minikube docker-env)
+
+Build image inside minikube
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=spring-k8s/spring-k8s/hello-spring-k8s:latest
+
+Verfiy the image exists in minikube
+docker images | grep hello-spring-k8s
+
+Restart the deployment
+kubectl rollout restart deployment gs-spring-boot-k8s
+
+Forwading the request from computer to the service running in kubernate cluster
+kubectl port-forward svc/gs-spring-boot-k8s 9090:80
+
+What is gracefull shutdown, timeout for shutdown phase and its default value.
+
+What is kubernates probes? types of probes: Liveness Probe and Readiness Probe
+Spring boot integration with Kubernates probes
+How to enable these probes in deployment.yaml file.
+what is configMap, volumeMounts, env, volumes in deployment.
+curl http://localhost:9090/actuator/env | jq
