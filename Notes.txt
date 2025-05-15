@@ -135,6 +135,7 @@ Spring boot integration with Kubernates probes
 How to enable these probes in deployment.yaml file.
 what is configMap, volumeMounts, env, volumes in deployment.
 curl http://localhost:9090/actuator/env | jq
+
 kubectl create configmap gs-spring-boot-k8s \
   --from-file=application.properties
 
@@ -163,3 +164,4 @@ How to orchestrate applications using k8s:
 2) create the deployement file and service file
 3) Appply those file using kubectl
 4) Optional you can use config maps to externalize the application properties as well.
+
