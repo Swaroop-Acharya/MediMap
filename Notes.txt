@@ -98,7 +98,7 @@ What is schema registory, why orderplacedEvent removed from producer and consume
 what is avro how it is helpfull for maintaining single point of truth
 
 
-Kubernates:
+Kubernates: (Rosource linK: https://spring.io/guides/topicals/spring-on-kubernetes#_deploying_to_kubernetes)
 what is k8s, its uses
 What is Cluster, Nodes, Pods, Services, Deployment
 Nodes: Master node, Worker Nodes 
