@@ -135,3 +135,31 @@ Spring boot integration with Kubernates probes
 How to enable these probes in deployment.yaml file.
 what is configMap, volumeMounts, env, volumes in deployment.
 curl http://localhost:9090/actuator/env | jq
+kubectl create configmap gs-spring-boot-k8s \
+  --from-file=application.properties
+
+These is two ways to create the docker image and run the docker image locally:
+1) Using cloud native buildpacks:
+ - use ./mvnw spring-boot:build-image
+ - docker run -p 8080:8080 --name your-image-name -t tag-name
+ *) to use this in kubernates like minikube you have two ways
+	- Push it to docker kub
+	- load it minikube - minikube image load your-image-name
+2) Using dockerfile
+ - create a docker file 
+ - docker build -t your-image-name .
+ - docker run -p 8080:8080 your-image-name
+ - push to docker hub or load it to minikube
+
+How to push to docker hub:
+- docker tag your-image-name your-dockerhub-username/your-image-name
+  docker push your-dockerhub-username/your-image-name
+- use the deployed docker hub image name in deployement yaml file
+- kubectl apply -f deployment.yaml
+
+
+How to orchestrate applications using k8s:
+1) Create the image run it locally or push it to docker hub
+2) create the deployement file and service file
+3) Appply those file using kubectl
+4) Optional you can use config maps to externalize the application properties as well.
