@@ -13,10 +13,10 @@
     </parent>
 
     <groupId>com.medimap</groupId>
-    <artifactId>inventory-service</artifactId>
+    <artifactId>order-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>inventory-service</name>
-    <description>Inventory service</description>
+    <name>order-service</name>
+    <description>Order service</description>
 
     <properties>
         <java.version>21</java.version>
